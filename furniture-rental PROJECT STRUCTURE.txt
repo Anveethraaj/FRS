@@ -1,0 +1,90 @@
+furniture-rental/
+├─ pom.xml
+├─ README.md
+├─ .gitignore
+├─ mvnw
+├─ mvnw.cmd
+├─ src/
+│  ├─ main/
+│  │  ├─ java/
+│  │  │  └─ com/
+│  │  │     └─ example/
+│  │  │        └─ furniturerental/
+│  │  │           ├─ FurnitureRentalApplication.java
+│  │  │           │
+│  │  │           ├─ config/
+│  │  │           │  ├─ OpenApiConfig.java             # Swagger/OpenAPI (optional)
+│  │  │           │  ├─ JacksonConfig.java             # ObjectMapper tweaks (optional)
+│  │  │           │  ├─ CorsConfig.java                # CORS settings (optional)
+│  │  │           │  └─ DataLoader.java                # Seed initial data (CommandLineRunner)
+│  │  │           │
+│  │  │           ├─ controller/
+│  │  │           │  ├─ FurnitureController.java       # /api/v1/furniture
+│  │  │           │  └─ RentalController.java          # /api/v1/rentals
+│  │  │           │
+│  │  │           ├─ service/
+│  │  │           │  ├─ FurnitureService.java
+│  │  │           │  ├─ RentalService.java
+│  │  │           │  ├─ DamageAssessmentService.java
+│  │  │           │  └─ InvoiceService.java
+│  │  │           │
+│  │  │           ├─ repository/
+│  │  │           │  ├─ FurnitureRepository.java
+│  │  │           │  └─ RentalRepository.java
+│  │  │           │
+│  │  │           ├─ model/
+│  │  │           │  ├─ entity/
+│  │  │           │  │  ├─ Furniture.java              # JPA entities
+│  │  │           │  │  └─ Rental.java
+│  │  │           │  ├─ dto/
+│  │  │           │  │  ├─ FurnitureDTO.java           # API payloads
+│  │  │           │  │  ├─ RentalRequest.java
+│  │  │           │  │  ├─ ExtendRentalRequest.java
+│  │  │           │  │  ├─ ReturnRequest.java
+│  │  │           │  │  ├─ DamageReportDTO.java
+│  │  │           │  │  └─ RentalResponse.java
+│  │  │           │  └─ enums/
+│  │  │           │     ├─ Category.java
+│  │  │           │     ├─ Condition.java
+│  │  │           │     ├─ RentalStatus.java
+│  │  │           │     └─ BedSize.java
+│  │  │           │
+│  │  │           ├─ exception/
+│  │  │           │  ├─ FurnitureRentalException.java   # base runtime exception
+│  │  │           │  ├─ ItemNotAvailableException.java
+│  │  │           │  ├─ InvalidRentalPeriodException.java
+│  │  │           │  ├─ OverdueRentalException.java
+│  │  │           │  └─ InsufficientDepositException.java
+│  │  │           │
+│  │  │           ├─ advice/
+│  │  │           │  └─ GlobalExceptionHandler.java     # @ControllerAdvice (optional)
+│  │  │           │
+│  │  │           ├─ util/
+│  │  │           │  └─ CostCalculator.java             # pricing, deposits, late fees
+│  │  │           │
+│  │  │           ├─ security/                          # (optional - if you add auth)
+│  │  │           │  ├─ SecurityConfig.java
+│  │  │           │  └─ JwtAuthFilter.java
+│  │  │           │
+│  │  │           └─ mapper/                            # (optional - MapStruct)
+│  │  │              └─ FurnitureMapper.java
+│  │  ├─ resources/
+│  │  │  ├─ application.properties                      # profiles in application-*.properties
+│  │  │  ├─ static/                                     # static assets (if any)
+│  │  │  ├─ templates/                                  # Thymeleaf (if any)
+│  │  │  └─ db/
+│  │  │     ├─ migration/                               # Flyway migrations
+│  │  │     │  ├─ V1__init_schema.sql                   # create tables
+│  │  │     │  └─ V2__seed_data.sql                     # seed data
+│  │  │     └─ data/                                    # sample csv/json if you import on startup
+│  │  └─ webapp/                                        # (rare for pure APIs)
+│  └─ test/
+│     ├─ java/
+│     │  └─ com/example/furniturerental/
+│     │     ├─ integration/
+│     │     │  └─ RentalControllerIT.java               # @SpringBootTest + Testcontainers (optional)
+│     │     └─ unit/
+│     │        ├─ RentalServiceTest.java
+│     │        └─ CostCalculatorTest.java
+│     └─ resources/
+│        └─ application-test.properties
